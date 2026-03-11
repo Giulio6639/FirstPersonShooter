@@ -31,7 +31,6 @@ public class Movement : MonoBehaviour
         float z = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z;
-        cc.Move(move * speed * Time.deltaTime);
 
         if (Input.GetButtonDown("Jump") && groundedPlayer)
         {
@@ -39,6 +38,6 @@ public class Movement : MonoBehaviour
         }
 
         velocity.y += gravity * Time.deltaTime;
-        cc.Move(velocity * Time.deltaTime);
+        cc.Move( (move * speed + velocity) * Time.deltaTime);
     }
 }
